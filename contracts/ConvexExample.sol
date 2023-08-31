@@ -2,13 +2,12 @@
 pragma solidity 0.8.19;
 
 /// @dev Interface Imports
-import {ICurveExchange} from "./interfaces/ICurveExchange.sol";
-import {ICurvePool} from "./interfaces/ICurvePool.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
-contract FlexFi {
+contract ConvexExample {
     address public owner;
 
     constructor() {

@@ -1,10 +1,10 @@
 const hre = require("hardhat");
 
 async function main() {
-  const flexFi = await hre.ethers.deployContract("FlexFi");
-  await flexFi.waitForDeployment();
+  const curveExample = await hre.ethers.deployContract("CurveExample");
+  await curveExample.waitForDeployment();
 
-  console.log(`FlexFi deployed to ${await flexFi.getAddress()}`);
+  console.log(`CurveExample deployed to ${await curveExample.getAddress()}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
