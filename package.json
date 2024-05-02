@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@aave/core-v3": "^1.19.3",
+    "@aave/periphery-v3": "^2.5.2",
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
     "@openzeppelin/contracts": "^4.9.3",
     "dotenv": "^16.3.1",
