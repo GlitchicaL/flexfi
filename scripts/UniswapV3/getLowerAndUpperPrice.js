@@ -64,6 +64,10 @@ async function main() {
     "Upper Price": upperPrice,
     "Inverted Upper Price": Big(1).div(upperPrice).toString(),
   });
+
+  console.log(Big(liquidity).mul((upperRate - currentRate) / (upperRate - lowerRate)).toString())
+  console.log(Big(liquidity).mul((currentRate - lowerRate) / (upperRate - lowerRate)).toString())
+  console.log(liquidity)
 }
 
 main();
