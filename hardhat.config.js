@@ -9,7 +9,14 @@ require("@nomicfoundation/hardhat-toolbox");
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: {
-    version: "0.8.19",
+    compilers: [
+      {
+        version: "0.8.19",
+      },
+      {
+        version: "0.8.28",
+      },
+    ],
     settings: {
       optimizer: {
         enabled: process.env.OPTIMIZER === "true" ? true : false,
