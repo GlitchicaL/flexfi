@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "migrate-hardhat2-to-hardhat3": {
+      "source": "nomicfoundation/hardhat-skills",
+      "sourceType": "github",
+      "skillPath": "skills/migrate-hardhat2-to-hardhat3/SKILL.md",
+      "computedHash": "dfc9d61da600cfaa0ef7842905d84ae7d15c37537679828916f0db2da457f7a2"
+    }
+  }
+}

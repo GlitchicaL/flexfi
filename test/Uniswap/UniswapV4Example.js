@@ -1,15 +1,18 @@
-const { loadFixture } = require("@nomicfoundation/hardhat-toolbox/network-helpers");
-const { expect } = require("chai");
-const { ethers } = require("hardhat");
+import hre from "hardhat";
+import { expect } from "chai";
 
 describe("UniswapV4Example", function () {
-  // We define a fixture to reuse the same setup in every test.
-  // We use loadFixture to run this setup once, snapshot that state,
-  // and reset Hardhat Network to that snapshot in every test.
-  async function deployUniswapV4ExampleFixture() {
-    const [owner] = await ethers.getSigners();
+  let connection, loadFixture;
 
-    const UniswapV4Example = await ethers.getContractFactory("UniswapV4Example");
+  before(async () => {
+    connection = await hre.network.create("mainnetFork");
+    loadFixture = connection.networkHelpers.loadFixture.bind(connection.networkHelpers);
+  });
+
+  async function deployUniswapV4ExampleFixture() {
+    const [owner] = await connection.ethers.getSigners();
+
+    const UniswapV4Example = await connection.ethers.getContractFactory("UniswapV4Example");
     const uniswapV4Example = await UniswapV4Example.deploy();
 
     return { uniswapV4Example, owner };
@@ -29,7 +32,7 @@ describe("UniswapV4Example", function () {
     it("Should swap WETH for USDC", async function () {
       const { uniswapV4Example, owner } = await loadFixture(deployUniswapV4ExampleFixture);
 
-      const amountIn = ethers.parseUnits("1", 18);
+      const amountIn = connection.ethers.parseUnits("1", 18);
 
       await (await uniswapV4Example.connect(owner).approveTokenWithPermit2("0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", amountIn)).wait();
 

@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "npx hardhat test",
-    "curve": "REPORT_GAS=true npx hardhat test ./test/CurveExample.js"
+    "curve": "npx hardhat test ./test/CurveExample.js --gas-stats"
   },
   "keywords": [],
   "author": "",
@@ -13,16 +14,21 @@
   "devDependencies": {
     "@aave/core-v3": "^1.19.3",
     "@aave/periphery-v3": "^2.5.2",
-    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@nomicfoundation/hardhat-toolbox-mocha-ethers": "^3.0.7",
     "@openzeppelin/contracts": "^4.9.3",
     "@uniswap/universal-router": "^2.1.0",
     "@uniswap/v4-core": "^1.0.2",
     "@uniswap/v4-periphery": "^1.0.3",
+    "chai": "^6.2.2",
     "dotenv": "^16.3.1",
-    "hardhat": "^2.22.17"
+    "hardhat": "^3.13.0",
+    "@types/mocha": "^10.0.0",
+    "@types/chai": "^5.0.0",
+    "@types/chai-as-promised": "^8.0.0",
+    "@types/node": "^22.0.0"
   },
   "dependencies": {
     "@uniswap/v3-periphery": "^1.4.3",
-    "big.js": "^6.2.1"
+    "big.js": "^7.0.1"
   }
 }

@@ -8,10 +8,20 @@ import {Actions} from "@uniswap/v4-periphery/src/libraries/Actions.sol";
 
 // UNISWAP V4 ROUTER
 import {PoolKey} from "@uniswap/v4-core/src/interfaces/IPoolManager.sol";
-import {IV4Router} from "@uniswap/v4-periphery/src/interfaces/IV4Router.sol";
+// import {IV4Router} from "@uniswap/v4-periphery/src/interfaces/IV4Router.sol";
 
 // ERC20
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
+interface IV4Router {
+    struct ExactInputSingleParams {
+        PoolKey poolKey;
+        bool zeroForOne;
+        uint128 amountIn;
+        uint128 amountOutMinimum;
+        bytes hookData;
+    }
+}
 
 interface IUniversalRouter {
     function execute(
@@ -49,7 +59,7 @@ contract UniswapV4Example {
     }
 
     function executeTrade(
-        PoolKey calldata key,
+        PoolKey memory key,
         uint128 amountIn,
         uint128 minAmountOut
     ) external {
@@ -68,10 +78,10 @@ contract UniswapV4Example {
         params[0] = abi.encode(
             IV4Router.ExactInputSingleParams({
                 poolKey: key,
-                zeroForOne: false, // true if we're swapping token0 for token1
-                amountIn: amountIn, // amount of tokens we're swapping
-                amountOutMinimum: 0, // minimum amount we expect to receive
-                hookData: bytes("") // no hook data needed
+                zeroForOne: false,
+                amountIn: amountIn,
+                amountOutMinimum: 0,
+                hookData: bytes("")
             })
         );
 
